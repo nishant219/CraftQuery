@@ -16,29 +16,37 @@ const notion=new Client({
 
 const databaseId=process.env.NOTION_DATABASE_ID;
 
-app.post("/add",async(req,res)=>{
-    const {name,email,subject,category, description, date, attachments, actionStatus }=req.body;
-    try{
-        const response=await notion.pages.create({
-            parent:{database_id:databaseId},
+
+app.post("/add", async (req, res) => {
+    const { name, email, subject, category, description, date, attachments, actionStatus } = req.body;
+
+    // Convert category and actionStatus to arrays if they are not already arrays
+    const categoryArray = Array.isArray(category) ? category : [category];
+    const actionStatusArray = Array.isArray(actionStatus) ? actionStatus : [actionStatus];
+
+    try {
+        const response = await notion.pages.create({
+            parent: { database_id: databaseId },
             properties: {
                 Name: { title: [{ text: { content: name } }] },
                 Email: { email: email },
                 Subject: { rich_text: [{ text: { content: subject } }] },
-                Category: { multi_select: category.map(categoryItem => ({ name: categoryItem })) },
+                Category: { multi_select: categoryArray.map(categoryItem => ({ name: categoryItem })) },
                 Description: { rich_text: [{ text: { content: description } }] },
                 Date: { date: { start: date } },
                 Attachments: { files: [{ name: "Attachment", type: "external", external: { url: attachments } }] },
-                ActionStatus: { multi_select: actionStatus.map(statusItem => ({ name: statusItem })) },
+                ActionStatus: { multi_select: actionStatusArray.map(statusItem => ({ name: statusItem })) },
             },
         });
+
         console.log("Success! Entry added: ", response);
-        res.send({message:"Success! Entry added.", response_data :response});
-    }catch(error){
+        res.send({ message: "Success! Entry added.", response_data: response });
+    } catch (error) {
         console.error(error.body);
-        res.status(500).send({error:error.body});
+        res.status(500).send({ error: error.body });
     }
 });
+
 
 
 app.get("/list",async(req,res)=>{
