@@ -8,6 +8,7 @@ import { HeroSection } from "./components/HeroSection/HeroSection.jsx";
 import {Features} from "./components/Features/Features.jsx";
 import {FutureScope} from './components/FutureScope/FutureScope.jsx';
 import QueryForm from './components/QueryForm/QueryForm.jsx';
+import {CardComponent} from "./components/CardComponent/CardComponent.jsx"
 
 const Home=()=>(
   <div>
@@ -22,7 +23,8 @@ const router=createBrowserRouter(
     <Route path="/" element={<App />}>
 
       <Route index element={<Home />} />
-      <Route path="/craftquery" element={<QueryForm />} />  
+      <Route path="/craftquery" element={<QueryForm />} />
+      <Route path="/getallqueries" element={<CardComponent />} />  
 
     </Route>
   )
