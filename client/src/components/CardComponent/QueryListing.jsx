@@ -7,7 +7,7 @@ export function QueryListing() {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/list/')
+    fetch('https://craft-query-server.vercel.app/list/')
       .then(response => response.json())
       .then(data => setData(data.response_data.results || []))
       .catch(error => console.error('Error fetching data:', error));
