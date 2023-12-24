@@ -91,6 +91,27 @@ app.patch("/update/:id",async(req,res)=>{
     }
 });
 
+//user will able to search by name, email
+app.get("/search/:query", async (req, res) => {
+    try {
+        const response = await notion.search({
+            query: req.params.query,
+        });
+
+        if (response.results.length === 0) {
+            console.log("No matches found for query:", req.params.query);
+            return res.status(404).send({ message: "No matches found", query: req.params.query });
+        }
+
+        console.log("Success! Entries retrieved for query:", req.params.query);
+        res.send({ message: "Success! Entries retrieved.", query: req.params.query, response_data: response });
+    } catch (error) {
+        console.error("Error searching entries:", error.body);
+        res.status(500).send({ error: "Error searching entries", query: req.params.query, error_data: error.body });
+    }
+});
+
+
 
 
 app.listen(5000,()=>{
