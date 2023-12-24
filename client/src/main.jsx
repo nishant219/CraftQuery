@@ -2,7 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+
+import Root from "./Root.jsx";
 
 import { HeroSection } from "./components/HeroSection/HeroSection.jsx";
 import {Features} from "./components/Features/Features.jsx";
@@ -19,17 +21,32 @@ const Home=()=>(
   </div>
 )
 
+// const router=createBrowserRouter(
+//   createRoutesFromElements(
+//     <Route path="/" element={<App />}>
+
+//       <Route index element={<Home />} />
+//       <Route path="/craftquery" element={<QueryForm />} />
+//       <Route path="/getallqueries" element={<QueryListing />} />  
+
+//     </Route>
+//   )
+// ) 
+
 const router=createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
+    <Route path="/" element={<Root/> } > 
 
-      <Route index element={<Home />} />
+      <Route path="/" element={<Home/>} />
+      <Route path="/features" element={<Features/>} />
+      <Route path="/future-scope" element={<FutureScope/>} />
       <Route path="/craftquery" element={<QueryForm />} />
-      <Route path="/getallqueries" element={<QueryListing />} />  
+     <Route path="/getallqueries" element={<QueryListing />} />
 
     </Route>
   )
-) 
+)
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
