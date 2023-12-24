@@ -29,37 +29,37 @@ export function CardComponent({ data = {
           alt={subject}
           className="h-48 w-full object-cover"
         />
-        <div className="p-4">
-          <h1 className="text-xl font-semibold mb-2">
+        <div className="p-4 text-center">
+          <h1 className="text-2xl font-semibold mb-2">
             {subject}
           </h1>
           <p className="text-gray-600 mb-4">{description}</p>
           <div className="mb-4">
-            <span className="inline-block bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
+            <span className="inline-block bg-gray-100 px-3 py-1 text-xs font-semibold text-gray-900">
               {category}
             </span>
           </div>
-          <div className="flex items-center space-x-2 mb-2">
-            <div className="h-8 w-8 rounded-full overflow-hidden">
-              <img
-                className="h-full w-full object-cover"
-                src="https://via.placeholder.com/40"
-                alt={name}
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-base font-medium text-gray-900">{name}</span>
-              <span className="text-sm font-medium text-gray-500">@{email}</span>
-            </div>
+
+          <div className="mb-2">
+            <span className="block text-xs font-medium text-gray-900">Name:</span>
+            <span className="block text-xs text-gray-600">{name}</span>
           </div>
-          <div className="flex items-center space-x-2">
-            <span className="text-[10px] font-medium text-gray-900">Date:</span>
-            <span className="text-[10px] text-gray-600">{date}</span>
+
+          <div className="mb-2">
+            <span className="block text-xs font-medium text-gray-900">Email:</span>
+            <span className="block text-xs text-gray-600">{email}</span>
           </div>
-          <div className="flex items-center space-x-2 mt-2">
-            <span className="text-[10px] font-medium text-gray-900">Action Status:</span>
-            <span className="text-[10px] text-gray-600">{actionStatus}</span>
+
+          <div className="mb-2">
+            <span className="block text-xs font-medium text-gray-900">Date:</span>
+            <span className="block text-xs text-gray-600">{date}</span>
           </div>
+
+          <div className="mb-2">
+            <span className="block text-xs font-medium text-gray-900">Action Status:</span>
+            <span className="block text-xs text-gray-600">{actionStatus}</span>
+          </div>
+          
         </div>
       </div>
     </div>
