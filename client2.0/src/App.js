@@ -8,6 +8,7 @@ import {FutureScope} from './components/FutureScope/FutureScope.jsx';
 import QueryForm from './components/QueryForm/QueryForm.jsx';
 import {CardComponent} from "./components/CardComponent/CardComponent.jsx";
 import {QueryListing} from "./components/CardComponent/QueryListing.jsx";
+import {TableComponent} from "./components/CardComponent/TableComponent.jsx"
 
 import { Navbar } from './components/Navbar/Navbar';
 import { Footer } from './components/Footer/Footer';
@@ -32,6 +33,7 @@ function App() {
             <Route path="/craftquery" element={<QueryForm/>} />
             <Route path="/getallqueries" element={<QueryListing/>} />
             <Route path="/card" element={<CardComponent/>} />
+            <Route path="/table" element={<TableComponent/>} />
           </Routes>
 
         <Footer/>
